@@ -13,6 +13,7 @@ class Ads extends Model
         'ads_id',
         'user_id',
         'category',
+        'sub_category',
         'photo1',
         'photo2',
         'photo3',

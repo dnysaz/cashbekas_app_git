@@ -67,10 +67,16 @@ Route::middleware(['admin'])->group(function () {
 Route::middleware(['auth','verified'])->group(function () {
 
 
-    Route::get('create_ads', [PageController::class, 'create_ads']);
+    Route::get('create_ads', [PageController::class, 'create']);
     Route::post('create_ads', [PageController::class, 'create_post_ads']);
 
+    // testing
+    // Route::get('create', [PageController::class, 'create']);
+    Route::get('create/{category}/{sub_category}', [PageController::class, 'create_new_ads']);
+
     Route::get('delete_ads/{ads_id}', [PageController::class, 'delete_ads']);
+    Route::get('edit_ads/{ads_id}', [PageController::class, 'edit_ads']);
+
 
 
     // user dashboard web routes
@@ -83,8 +89,6 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::post('simpan_profile/{user_id}', [UserController::class, 'simpan_profile']);
 
 
-    // testing
-    Route::get('create', [PageController::class, 'create']);
 
 
     // changer status ads by user 

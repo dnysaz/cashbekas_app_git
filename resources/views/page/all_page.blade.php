@@ -36,21 +36,42 @@
         <div class="row mt-2 justify-content-center">
             @if(count($ads)>0)
             @foreach ($ads as $ad)
-            <div class="col-md-3 p-2">
-                <a href="{{url($ad->category.'/'.$ad->location.'/'.$ad->link.'/'.$ad->user_id)}}" class="text-decoration-none">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img class="img-fluid" style="max-height:200px; border-radius:10px; overflow:hidden;" src="{{url('images/file_upload/'.$ad->photo1)}}" alt="{{$ad->ads_id}}">
+            <div class="col-3 p-2 d-none d-md-block d-sm-none">
+                <div class="card">
+                    <a href="{{url($ad->category.'/'.$ad->location.'/'.$ad->link.'/'.$ad->user_id)}}" class="text-decoration-none">
+                        <div class="card-body event-card">
+                            <div>
+                                <div class="text-center event-cover">
+                                    <img src="{{url('images/file_upload/'.$ad->photo1)}}" alt="{{$ad->ads_id}}">
+                                </div>
                             </div>
-                            <div style="font-weight:700;">Rp. {{$ad->price}}</div>
-                            <div class="text-dark small">{{$ad->title}}</div>
-                            <div class="text-primary small mt-1"><i class="bi bi-geo-alt-fill"></i> {{$ad->location}} / {{$ad->created_at->diffForHumans()}}</div>
+                            <h4 class="text-muted">{{$ad->title}}</h4>
+                            <div class="" style="font-weight:700;">Rp. {{$ad->price}}</div>
+                            <div class="text-primary small mt-3">{{$ad->category}} / {{$ad->sub_category}}</div>
+                            <div class="text-primary small"><i class="bi bi-geo-alt-fill"></i> {{$ad->location}} / {{$ad->created_at->diffForHumans()}}</div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 p-2 d-md-none d-sm-block">
+                <div class="card">
+                    <a href="{{url($ad->category.'/'.$ad->location.'/'.$ad->link.'/'.$ad->user_id)}}" class="text-decoration-none">
+                        <div class="card-body event-card">
+                            <div>
+                                <div class="text-center event-cover">
+                                    <img src="{{url('images/file_upload/'.$ad->photo1)}}" alt="{{$ad->ads_id}}">
+                                </div>
+                            </div>
+                            <h4 class="text-muted">{{$ad->title}}</h4>
+                            <div class="" style="font-weight:700;">Rp. {{$ad->price}}</div>
+                            <div class="text-primary small mt-3">{{$ad->category}} / {{$ad->sub_category}}</div>
+                            <div class="text-primary small"><i class="bi bi-geo-alt-fill"></i> {{$ad->location}} / {{$ad->created_at->diffForHumans()}}</div>
+                        </div>
+                    </a>
+                </div>
             </div>
             @endforeach
+            
             @else
             <div class="mt-4 text-muted">
                 <h4>Belum ada iklan yang dapat ditampilkan</h4>

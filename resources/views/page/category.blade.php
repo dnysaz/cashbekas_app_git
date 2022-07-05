@@ -38,15 +38,16 @@
             @foreach ($ads as $ad)
             <div class="col-md-3 p-2">
                 <a href="{{url($ad->category.'/'.$ad->location.'/'.$ad->link.'/'.$ad->user_id)}}" class="text-decoration-none">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <img class="img-fluid p-1" style="max-height:200px; border-radius:10px; overflow:hidden;" src="{{url('images/file_upload/'.$ad->photo1)}}" alt="{{$ad->ads_id}}">
+                    <div class="card-body event-card">
+                        <div>
+                            <div class="text-center event-cover">
+                                <img src="{{url('images/file_upload/'.$ad->photo1)}}" alt="{{$ad->ads_id}}">
                             </div>
-                            <div style="font-weight:700;">Rp. {{$ad->price}}</div>
-                            <div class="text-dark small">{{$ad->title}}</div>
-                            <div class="text-primary small mt-1"><i class="bi bi-geo-alt-fill"></i> {{$ad->location}} / {{$ad->created_at->diffForHumans()}}</div>
                         </div>
+                        <h4 class="text-muted">{{$ad->title}}</h4>
+                        <div class="" style="font-weight:700;">Rp. {{$ad->price}}</div>
+                        <div class="text-primary small mt-3">{{$ad->category}} / {{$ad->sub_category}}</div>
+                        <div class="text-primary small"><i class="bi bi-geo-alt-fill"></i> {{$ad->location}} / {{$ad->created_at->diffForHumans()}}</div>
                     </div>
                 </a>
             </div>

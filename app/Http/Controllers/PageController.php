@@ -14,11 +14,6 @@ use App\Mail\NewAdsMail;
 
 class PageController extends Controller
 {
-    public function create()
-
-    {
-        return view('page.create');
-    }
 
     public function index()
 
@@ -32,7 +27,7 @@ class PageController extends Controller
 
         $status  = 'actived';
 
-        $ads = Ads::where('status',$status)->where('draft',null)->latest()->paginate(20);
+        $ads = Ads::where('status',$status)->where('draft',null)->latest()->paginate(5);
 
         return view('page.all_page')->with('ads',$ads);
     }
@@ -61,13 +56,13 @@ class PageController extends Controller
         
     }
 
-    public function create_ads()
+    // public function create_ads()
 
-    {
-        $user_id = auth()->user()->user_id;
-        $user = User::where('user_id',$user_id)->get();
-        return view('page.create_ads')->with('user',$user);
-    }
+    // {
+    //     $user_id = auth()->user()->user_id;
+    //     $user = User::where('user_id',$user_id)->get();
+    //     return view('page.create_ads')->with('user',$user);
+    // }
 
     public function delete_ads($ads_id)
 
@@ -110,6 +105,7 @@ class PageController extends Controller
     {
         $validate = $request->validate([
             'category'  =>'required',
+            'sub_category' => 'required',
             'photo1'    =>'required|image|mimes:jpg,png,jpeg|max:2048|',
             'photo2'    =>'required|image|mimes:jpg,png,jpeg|max:2048|',
             'photo3'    =>'required|image|mimes:jpg,png,jpeg|max:2048|',
@@ -156,6 +152,7 @@ class PageController extends Controller
             'ads_id'    => $ads_id,
             'user_id'   => $user_id,
             'category'  => $request->category,
+            'sub_category'  => $request->sub_category,
             'photo1'    => $photo1_name,
             'photo2'    => $photo2_name,
             'photo3'    => $photo3_name,
@@ -186,6 +183,17 @@ class PageController extends Controller
 
     }
 
+    public function edit_ads($ads_id)
+
+    {
+        $user_id = auth()->user()->user_id;
+
+        $ads = Ads::where('user_id',$user_id)->where('ads_id',$ads_id)->get(); //get detail for ads field
+        $user = User::where('user_id',$user_id)->get(); //get detail for user field
+
+        return view('page.edit_ads')->with('ads',$ads)->with('user',$user);
+    }
+
 
     public function stop_ads(Request $request)
 
@@ -208,6 +216,28 @@ class PageController extends Controller
 
         }
         
+    }
+
+
+    //testing  create new ads version 2
+
+    public function create()
+
+    {
+        return view('page.create_ads');
+    }
+
+    public function create_new_ads($category, $sub_category)
+
+    {
+        $user_id = auth()->user()->user_id;
+        $user = User::where('user_id',$user_id)->get();
+
+        return view('page.create_new_ads')
+
+        ->with('category',$category)
+        ->with('sub_category',$sub_category)
+        ->with('user',$user);
     }
 
 }

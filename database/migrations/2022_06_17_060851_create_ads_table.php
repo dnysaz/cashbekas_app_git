@@ -18,6 +18,7 @@ class CreateAdsTable extends Migration
             $table->string('ads_id');
             $table->string('user_id');
             $table->string('category');
+            $table->string('sub_category');
             $table->string('photo1');
             $table->string('photo2')->nullable();
             $table->string('photo3')->nullable();
