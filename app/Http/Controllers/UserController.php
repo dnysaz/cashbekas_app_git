@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Ads;
+use App\Models\Location;
 use Exception;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -53,7 +54,8 @@ class UserController extends Controller
     {
         $ads = Ads::where('user_id',$user_id)->latest()->paginate(10);
         $user = User::where('user_id',$user_id)->get();
-        return view('user.update_profile')->with('user',$user)->with('ads',$ads);
+        $locations = Location::where('province','Bali')->get();
+        return view('user.update_profile')->with('user',$user)->with('ads',$ads)->with('locations',$locations);
     }
 
 

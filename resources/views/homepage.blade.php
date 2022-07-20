@@ -1,4 +1,4 @@
-@extends('layouts.page')
+@extends('layouts.app')
 
 @section('app')
 
@@ -33,7 +33,7 @@
         <a href="{{url('all_page')}}" class="text-decoration-none">
             
             <h4 class="text-muted p-2" style="border:2px solid grey; border-radius:5px;">Mau lihat-lihat dulu 
-                <i class="bi bi-arrow-right"></i>
+                {{-- <i class="bi bi-arrow-right"></i> --}}
             </h4>
         
         </a>
@@ -57,13 +57,9 @@
             <hr>
         </div>
         <ul>
-            <li>Kendaraan</li>
-            <li>Properti</li>
-            <li>Elektronik</li>
-            <li>Rumah Tangga</li>
-            <li>Keperluan Sekolah</li>
-            <li>Hobby</li>
-            <li>dll</li>
+            @foreach( $categories as $category)
+                <li><a href="{{url('c/'.$category->category)}}">{{$category->category}}</a></li>
+            @endforeach
         </ul>
 
     </div>
@@ -75,15 +71,9 @@
             <hr>
        </div>
        <ul>
-           <li>Denpasar</li>
-           <li>Singaraja</li>
-           <li>Gianyar</li>
-           <li>Karangasem</li>
-           <li>Klungkung</li>
-           <li>Bangli</li>
-           <li>Tabanan</li>
-           <li>Badung</li>
-           <li>Nusa Penida</li>
+           @foreach ($locations as $location)
+               <li><a href="{{url('l/'.$location->regency)}}">{{$location->regency}}</a></li>
+           @endforeach
        </ul>
 
     </div>
@@ -95,10 +85,10 @@
             <hr>
         </div>
         <ul>
-            <li>Tentang Kami</li>
-            <li>Kontak Kami</li>
-            <li>Syarat Dan Ketentuan</li>
-            <li>Perjanjian Privasi</li>
+            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">Kontak Kami</a></li>
+            <li><a href="#">Syarat Dan Ketentuan</a></li>
+            <li><a href="#">Perjanjian Privasi</a></li>
         </ul>
 
     </div>

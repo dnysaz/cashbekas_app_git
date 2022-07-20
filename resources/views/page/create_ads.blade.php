@@ -3,7 +3,7 @@
 <div class="row mt-2 text-muted">
     <div class="col-md-9">
         <a href="{{url('/all_page')}}" class="text-decoration-none text-muted"><h5>cash<span class="text-danger">bekas</span>.com</h5></a>
-        <h2>Pasang Iklan</h2>
+        <h2 class="text-muted">Pasang Iklan</h2>
     </div>
     <div class="col-md-3">
         <div class="row">
@@ -19,35 +19,38 @@
 </div>
 <div class="mt-4">
     <div class="card text-center text-muted">
-        <h3 class="p-2">PILIH KATEGORI IKLAN</h3>
+        <h4 class="p-2 mt-1">PILIH KATEGORI IKLAN</h4>
     </div>
-    <div class="row mt-4">
-        <div class="col-md-5">
+    <div class="row mt-4 mb-5">
+        <div class="col-md-5 mt-2">
           <div class="list-group" id="list-tab" role="tablist">
-            <a class="list-group-item list-group-item-action active" id="list-properti-list" data-toggle="list" href="#list-properti" role="tab" aria-controls="home">PROPERTI <i class="bi bi-chevron-right"></i></a>
-            <a class="list-group-item list-group-item-action" id="list-elektronika-list" data-toggle="list" href="#list-elektronika" role="tab" aria-controls="profile">ELEKTRONIKA <i class="bi bi-chevron-right"></i></a>
+            <h5 class="text-muted">Kategori</h5>
+            @if(count($categories)>0)
+            @foreach ($categories as $category)
+                <a class="list-group-item list-group-item-action" id="list-elektronika-list" data-toggle="list" href="#{{$category->slug}}" role="tab" aria-controls="profile">{{$category->category}} <span><i class="bi bi-chevron-right"></i></span> </a>
+            @endforeach
+            @endif
           </div>
         </div>
-        <div class="col-md-7">
+        <div class="col-md-7 mt-2">
           <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="list-properti" role="tabpanel" aria-labelledby="list-properti-list">
+            <h5 class="text-muted">Sub Kategori</h5>
+            @if(count($categories)>0)
+            @foreach ($categories as $category)
+            <div class="tab-pane fade" id="{{$category->slug}}" role="tabpanel" aria-labelledby="list-elektronika-list">
                 <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action" id="list-home-list" href="{{url('create/Properti/Sewa-Rumah')}}" role="tab" aria-controls="home">SEWA RUMAH <i class="bi bi-chevron-right"></i></a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" href="{{url('create/Properti/Jual-Rumah')}}" role="tab" aria-controls="profile">JUAL RUMAH <i class="bi bi-chevron-right"></i></a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" href="{{url('create/Properti/Sewa-Villa')}}" role="tab" aria-controls="messages">SEWA VILLA <i class="bi bi-chevron-right"></i></a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" href="{{url('create/Properti/Jual-Villa')}}" role="tab" aria-controls="settings">JUAL VILLA <i class="bi bi-chevron-right"></i></a>
+                    <a class="list-group-item list-group-item-action" id="list-home-list"  href="{{url('create/'.$category->category.'/'.$category->sub_1)}}" role="tab" aria-controls="home">{{$category->sub_1}} <i class="bi bi-chevron-right"></i></a>
+                    <a class="list-group-item list-group-item-action" id="list-home-list"  href="{{url('create/'.$category->category.'/'.$category->sub_2)}}" role="tab" aria-controls="home">{{$category->sub_2}} <i class="bi bi-chevron-right"></i></a>
+                    <a class="list-group-item list-group-item-action" id="list-home-list"  href="{{url('create/'.$category->category.'/'.$category->sub_3)}}" role="tab" aria-controls="home">{{$category->sub_3}} <i class="bi bi-chevron-right"></i></a>
+                    <a class="list-group-item list-group-item-action" id="list-home-list"  href="{{url('create/'.$category->category.'/'.$category->sub_4)}}" role="tab" aria-controls="home">{{$category->sub_4}} <i class="bi bi-chevron-right"></i></a>
+                    <a class="list-group-item list-group-item-action" id="list-home-list"  href="{{url('create/'.$category->category.'/'.$category->sub_5)}}" role="tab" aria-controls="home">{{$category->sub_5}} <i class="bi bi-chevron-right"></i></a>
                 </div>
             </div>
-            <div class="tab-pane fade" id="list-elektronika" role="tabpanel" aria-labelledby="list-elektronika-list">
-                <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action" id="list-home-list"  href="{{url('create/Eletronika/Komputer')}}" role="tab" aria-controls="home">KOMPUTER <i class="bi bi-chevron-right"></i></a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" href="{{url('create/Elektronika/Kamera')}}" role="tab" aria-controls="profile">KAMERA <i class="bi bi-chevron-right"></i></a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" href="{{url('create/Elektronika/Drone')}}" role="tab" aria-controls="messages">DRONE <i class="bi bi-chevron-right"></i></a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" href="{{url('create/Elektronika/Aksesoris')}}" role="tab" aria-controls="settings">AKSESORIS <i class="bi bi-chevron-right"></i></a>  
-                </div>
-            </div>
+            @endforeach
+            @endif
           </div>
         </div>
     </div>
+    <div class="mt-5 mb-5"><br></div>
 </div>
 @endsection

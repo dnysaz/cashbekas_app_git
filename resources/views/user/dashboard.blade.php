@@ -1,17 +1,17 @@
-@extends('layouts.page')
+@extends('layouts.app')
 
 @section('app')
 
-<div class="mt-5 text-muted">
+<div class="mt-3 text-muted">
 
     <div class="row mb-5">
 
         <div class="col-md-4">
-            <h2>Profile Anda </h2>
+            <h3>Profile Anda </h3>
             <hr>
             <div class="row mt-4">
 
-                <div class="col-md-4">
+                <div class="col-4">
 
                     @if($user[0]->photo)
                     <img class="img-thumbnail rounded-circle" src="{{url('images/user_photo/'.$user[0]->photo)}}" alt="photo user">
@@ -21,7 +21,7 @@
 
                 </div>
 
-                <div class="col-md-8">
+                <div class="col-8">
 
                     <div class="mt-3">
                         <h5>{{$user[0]->name}}
@@ -61,9 +61,9 @@
             </div>
         </div>
 
-        <div class="col-md-8" style="border-left: 1px solid #eeefff">
+        <div class="col-md-8 d-none d-md-block d-sm-none" style="border-left: 1px solid #eeefff">
 
-            <h2>Iklan Anda  </h2>
+            <h3>Iklan Anda  </h3>
 
             {{-- error dan notifications  --}}
             @if(session()->has('success'))

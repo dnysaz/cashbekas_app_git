@@ -1,11 +1,9 @@
-@extends('layouts.page')
+@extends('layouts.app')
 
 @section('app')
 
-    <section id="category" class="mt-4 text-center">
-        {{-- c fot category  --}}
+    {{-- <section id="category" class="mt-4 text-center">
         <span class="badge badge-pill badge-danger p-2"><a href="{{url('/')}}" class="text-light text-decoration-none"><h6 class="mt-2">Home</h6></a></span>
-
         <span class="badge badge-pill badge-primary p-2"><a href="{{url('c/'.'Properti')}}" class="text-light text-decoration-none"><h6 class="mt-2">Properti</h6></a></span>
         <span class="badge badge-pill badge-danger p-2"><a href="{{url('c/'.'Elektronik')}}" class="text-light text-decoration-none"><h6 class="mt-2">Elektronik</h6></a></span>
         <span class="badge badge-pill badge-success p-2"><a href="{{url('c/'.'Kendaraan')}}" class="text-light text-decoration-none"><h6 class="mt-2">Kendaraan</h6></a></span>
@@ -15,7 +13,6 @@
         <span class="badge badge-pill badge-danger p-2"><a href="{{url('c/'.'Keperluan Anak')}}" class="text-light text-decoration-none"><h6 class="mt-2">Keperluan Anak</h6></a></span>
     </section>
     <section id="location" class="mt-2 text-center">
-        {{-- l for location  --}}
         <span class="badge badge-pill badge-danger p-2"><a href="{{url('l/'.'Denpasar')}}" class="text-light text-decoration-none"><h6 class="mt-2">Denpasar</h6></a></span>
         <span class="badge badge-pill badge-primary p-2"><a href="{{url('l/'.'Karangasem')}}" class="text-light text-decoration-none"><h6 class="mt-2">Karangasem</h6></a></span>
         <span class="badge badge-pill badge-success p-2"><a href="{{url('l/'.'Klungkung')}}" class="text-light text-decoration-none"><h6 class="mt-2">Klungkung</h6></a></span>
@@ -26,8 +23,8 @@
         <span class="badge badge-pill badge-success p-2"><a href="{{url('l/'.'Badung')}}" class="text-light text-decoration-none"><h6 class="mt-2">Badung</h6></a></span>
         <span class="badge badge-pill badge-warning p-2"><a href="{{url('l/'.'Nusa Penida')}}" class="text-light text-decoration-none"><h6 class="mt-2">Nusa Penida</h6></a></span>
         <span class="badge badge-pill badge-danger p-2"><a href="{{url('create_ads')}}" class="text-light text-decoration-none"><h6 class="mt-2">+ Pasang Iklan</h6></a></span>
+    </section> --}}
 
-    </section>
     <section id="new_ads" class="mt-4">
         <div class="mt-2">
             <h5 class="text-muted">Cari kebutuhan {{$category}} anda disini. </h5>

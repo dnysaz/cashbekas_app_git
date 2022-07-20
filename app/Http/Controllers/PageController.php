@@ -2,35 +2,163 @@
 
 namespace App\Http\Controllers;
 
+// use Stevebauman\Location\Facades\Location;
+use Adrianorosa\GeoLocation\GeoLocation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Ads;
+use App\Models\Category;
+use App\Models\Location;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewAdsMail;
 
 
+
 class PageController extends Controller
 {
+
+    public function test()
+
+    {
+        return view('page.test');
+    }
 
     public function index()
 
     {
-        return view('homepage');
+        $categories = Category::get();
+        $locations = Location::get();
+
+        return view('homepage')->with('categories',$categories)->with('locations',$locations);
     }
 
-    public function all_page()
-
+    public function all_page()  
+    
     {
 
         $status  = 'actived';
 
-        $ads = Ads::where('status',$status)->where('draft',null)->latest()->paginate(5);
+        // get current user with geolocation ip 
+        $ip = trim(shell_exec("dig +short myip.opendns.com @resolver1.opendns.com"));
+        // $ip = '203.128.79.246';
 
-        return view('page.all_page')->with('ads',$ads);
+        $geoLoc = GeoLocation::lookup($ip);
+
+        $categories = Category::get();
+        $locations = Location::where('province','Bali')->get();
+
+        $ads = Ads::where('status',$status)->where('location',$geoLoc->getCity())->where('draft',null)->latest()->paginate(20);
+
+        return view('page.all_page')->with('ads',$ads)->with('categories',$categories)->with('locations',$locations)->with('geoLoc',$geoLoc);
     }
+
+    // function for open search page on mobile view
+    public function search_page()
+    {
+        $status  = 'actived';
+        $categories = Category::get();
+
+        $ads =  Ads::where('status',$status)
+        ->where('draft',null)
+        ->oldest()->paginate(6);
+
+        return view('page.search_page')->with('ads',$ads)
+        ->with('categories',$categories);
+
+    }
+
+    //function for search ads
+    public function search_ads(Request $request)
+
+    {
+        $search_ads = $request->search_ads;
+
+        // indikator for reditect to mobile site or not
+        $type_search = $request->type_search;
+        $status  = 'actived';
+        $categories = Category::get();
+
+        if($request->search_ads == null) {
+
+            return redirect()->back();
+
+        } if($type_search == 'mobile') {
+
+            $ads =  Ads::where('title', 'like' , "%". $search_ads ."%")
+            ->where('status',$status)
+            ->where('draft',null)
+            ->latest()->paginate(20);
+            //  if mobile 
+            return view('page.search_page')->with('ads',$ads)
+            ->with('categories',$categories)
+            ->with('search_ads',$search_ads);
+
+        } else {
+
+           $ads =  Ads::where('title', 'like' , "%". $search_ads ."%")
+           ->where('status',$status)
+           ->where('draft',null)
+           ->latest()->paginate(20);
+            // if desktop
+            return view('page.search_result')->with('ads',$ads)
+            ->with('categories',$categories)
+            ->with('search_ads',$search_ads);
+        }
+
+    }
+
+    //function for filter ads on main homepage
+
+    public function filter_ads(Request $request)
+
+    {
+        $status  = 'actived';
+        $category = $request->category;
+        $location = $request->location;
+
+        $categories = Category::get();
+
+        if( $category == null && $location == null ) 
+        {
+            return redirect('all_page')->with('e','Harap pilih salah satu atau keduanya.');
+            
+        } elseif( $category != null && $location == null ) {
+            
+            $ads = Ads::where('status',$status)->where('draft',null)->where('category',$category)->latest()->paginate(20);
+
+            return view('page.filter_ads')
+            ->with('ads',$ads)
+            ->with('categories',$categories)
+            ->with('category',$category)
+            ->with('location',$location);
+
+        } elseif( $location != null && $category == null ) {
+
+            $ads = Ads::where('status',$status)->where('draft',null)->where('location',$location)->latest()->paginate(20);
+
+            return view('page.filter_ads')
+            ->with('ads',$ads)
+            ->with('categories',$categories)
+            ->with('category',$category)
+            ->with('location',$location);
+
+        } else {
+
+            $ads = Ads::where('status',$status)->where('draft',null)->where('category',$category)->where('location',$location)->latest()->paginate(20);
+
+            return view('page.filter_ads')
+            ->with('ads',$ads)
+            ->with('categories',$categories)
+            ->with('category',$category)
+            ->with('location',$location);
+        }
+        
+    }
+
+
 
     public function ads_page($category, $location, $link, $user_id)
 
@@ -224,20 +352,29 @@ class PageController extends Controller
     public function create()
 
     {
-        return view('page.create_ads');
+
+        $categories = Category::get();
+        
+        return view('page.create_ads')->with('categories',$categories);
     }
 
     public function create_new_ads($category, $sub_category)
 
     {
+
         $user_id = auth()->user()->user_id;
-        $user = User::where('user_id',$user_id)->get();
+        $user = User::where('user_id',$user_id)->get();  
+        $locations = Location::where('province','Bali')->get();      
 
         return view('page.create_new_ads')
 
         ->with('category',$category)
         ->with('sub_category',$sub_category)
+        ->with('locations',$locations)
         ->with('user',$user);
     }
+
+
+    
 
 }

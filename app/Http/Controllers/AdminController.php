@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Ads;
 
+use App\Models\Location;
+use App\Models\Category;
+
 use Exception;
 use Illuminate\Support\Facades\Auth;
 
@@ -177,6 +180,19 @@ class AdminController extends Controller
 
         return view('admin.users.all_user')->with('users',$users);
 
+    }
+
+
+    public function view_category() 
+    {
+        $categories = Category::get();
+        return view('admin.view_category')->with('categories',$categories);
+    }
+
+    public function view_location() 
+    {
+        $locations = Location::get();
+        return view('admin.view_location')->with('locations',$locations);
     }
 
     

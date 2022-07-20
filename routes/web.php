@@ -20,6 +20,18 @@ Route::get('c/{category}', [PageController::class, 'show_category']);
 Route::get('l/{location}', [PageController::class, 'show_location']);
 
 
+Route::post('filter_ads',[PageController::class, 'filter_ads']);
+Route::get('search_ads',[PageController::class, 'search_ads']);
+
+// membuka tampilan pencarian di mobile view
+Route::get('search_page',[PageController::class, 'search_page']);
+
+
+
+
+Route::get('test', [PageController::class, 'test']);
+
+
 
 
 
@@ -55,6 +67,10 @@ Route::middleware(['admin'])->group(function () {
     Route::get('verified_user', [AdminController::class, 'verified_user']);
     Route::get('all_user', [AdminController::class, 'all_user']);
 
+
+    // view category and location menu
+    Route::get('view_category', [AdminController::class, 'view_category']);
+    Route::get('view_location', [AdminController::class, 'view_location']);
 
 
 

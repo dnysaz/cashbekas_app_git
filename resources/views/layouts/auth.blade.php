@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <title>Login And Register</title>
   </head>
-  <body>
+  <body class="container">
 
     <div class="row mt-3">
       <div class="col-md-2 text-center">
@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <div class="container">
+    <div class="">
         
         @yield('app')
 

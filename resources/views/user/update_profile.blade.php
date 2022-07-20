@@ -1,18 +1,18 @@
-@extends('layouts.page')
+@extends('layouts.app')
 
 @section('app')
 
-<div class="mt-5 text-muted">
+<div class="mt-3 text-muted">
 
     <div class="row mb-5">
 
         <div class="col-md-4">
-            <h2>Profile Anda</h2>
+            <h3>Profile Anda</h3>
             <hr>
                 <form action="{{url('simpan_profile/'.$user[0]->user_id)}}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row mt-4">
-                        <div class="col-md-4">
+                        <div class="col-4">
                             @if($user[0]->photo)
                             <img class="img-thumbnail rounded-circle" src="{{url('images/user_photo/'.$user[0]->photo)}}" alt="photo user">
                             @else
@@ -20,7 +20,7 @@
                             @endif
                             <input type="file" accept="image/*" name="photo" id="photo" class="form-edit mt-1" style="color:transparent; width:105px;">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-8">
                             <div class="mt-4">
                                 <input class="form-edit form-control" type="text" name="name" id="name" value="{{$user[0]->name}}">
                             </div>
@@ -37,16 +37,9 @@
                         </div>
                         <div class="mt-3">
                             <select name="location" id="location" class="form-control @error('location') is-invalid @enderror">
-                                <option class="small" value="Denpasar" {{ $user[0]->location == 'Denpasar' ? 'selected' : '' }}>Denpasar</option>
-                                <option value="Badung" {{ $user[0]->location == 'Badung' ? 'selected' : '' }}>Badung</option>
-                                <option value="Gianyar" {{ $user[0]->location == 'Gianyar' ? 'selected' : '' }}>Gianyar</option>
-                                <option value="Klungkung" {{ $user[0]->location == 'Klungkung' ? 'selected' : '' }}>Klungkung</option>
-                                <option value="Bangli" {{ $user[0]->location == 'Bangli' ? 'selected' : '' }}>Bangli</option>
-                                <option value="Karangasem" {{ $user[0]->location == 'Karangasem' ? 'selected' : '' }}>Karangasem</option>
-                                <option value="Singaraja" {{ $user[0]->location == 'Singaraja' ? 'selected' : '' }}>Singaraja</option>
-                                <option value="Negara" {{ $user[0]->location == 'Negara' ? 'selected' : '' }}>Negara</option>
-                                <option value="Tabanan" {{ $user[0]->location == 'Tabanan' ? 'selected' : '' }}>Tabanan</option>
-                                <option value="Nusa-Penida" {{ $user[0]->location == 'Nusa-Penida' ? 'selected' : '' }}>Nusa Penida</option>
+                                @foreach ($locations as $location)
+                                    <option value="{{$location->regency}}" {{ $user[0]->location == $location->regency ? 'selected' : '' }}>{{$location->regency}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mt-3">
@@ -60,9 +53,9 @@
                 </form>
         </div>
 
-        <div class="col-md-8" style="border-left: 1px solid #eeefff">
+        <div class="col-md-8 d-none d-md-block d-sm-none" style="border-left: 1px solid #eeefff">
 
-            <h2>Iklan Anda  </h2>
+            <h3>Iklan Anda  </h3>
 
             {{-- error dan notifications  --}}
             @if(session()->has('success'))

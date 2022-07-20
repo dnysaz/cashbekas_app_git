@@ -7,13 +7,12 @@
         <div class="card">
             <div class="row p-2">
                 <div class="col-md-6">
-                    <h6 class="mt-2">Berdasarkan lokasi anda <span class="text-primary"> <i class="bi bi-geo-alt-fill"></i> {{$geoLoc->getCity()}}, {{$geoLoc->getRegion()}} </span> </h6>
+                    <h6 class="mt-2">Berdasarkan filter anda <span class="text-primary"> {{$category}}  {{$location}} </h6>
                 </div>
                 <div class="col-md-6">
                     <form action="{{url('filter_ads')}}" method="POST">
                         {{ csrf_field() }}
                         <div class="input-group">
-
                             <select name="category" id="" class="form-control">
                                 <option value="">Pilih Kategori</option>
                                 @if(count($categories)>0)
@@ -22,16 +21,18 @@
                                     @endforeach
                                 @endif
                             </select>
-
                             <select name="location" id="" class="form-control">
                                 <option value="">Ubah Lokasi</option>
-                                @if(count($locations)>0)
-                                    @foreach ($locations as $location)
-                                        <option value="{{$location->regency}}">{{$location->regency}}</option>
-                                    @endforeach
-                                @endif
+                                <option value="Denpasar">Denpasar</option>
+                                <option value="Badung">Badung</option>
+                                <option value="Gianyar">Gianyar</option>
+                                <option value="Klungkung">Klungkung</option>
+                                <option value="Bangli">Bangli</option>
+                                <option value="Karangasem">Karangasem</option>
+                                <option value="Singaraja">Singaraja</option>
+                                <option value="Jembrana">Jembrana</option>
+                                <option value="Nusa Penida">Nusa Penida</option>
                             </select>
-                            
                             <div class="input-group-prepend">
                                 <button class="btn btn-primary" style="submit">Filter</button>
                             </div>

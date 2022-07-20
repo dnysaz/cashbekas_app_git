@@ -64,7 +64,7 @@
         @endif
 
         <div class="mt-4 card">
-            <h5 class="p-2 mt-1 text-muted">Kategori : {{$category}} <i class="bi bi-chevron-right"></i> {{$sub_category}} <i class="bi bi-chevron-right"></i> <a href="{{url('create_ads')}}">Ubah Kategori</a> </h5>
+            <h5 class="p-2 mt-1 text-muted">Kategori  <i class="bi bi-chevron-right"></i> {{$category}} <i class="bi bi-chevron-right"></i> {{$sub_category}} <i class="bi bi-chevron-right"></i> <a href="{{url('create_ads')}}">Ubah Kategori</a> </h5>
         </div>
 
         <form action="{{url('create_ads')}}" onsubmit="return validate()" name="createForm" method="POST" enctype="multipart/form-data">
@@ -205,16 +205,9 @@
                         <label for="location" class="small text-muted">Berikan alamat lokasi anda secara tepat dan benar.</label>
                         <select name="location" id="location" class="form-control @error('location') is-invalid @enderror">
                             <option value="">Pilih Lokasi</option>
-                            <option value="Denpasar" {{ $user[0]->location == 'Denpasar' ? 'selected' : '' }}>Denpasar</option>
-                            <option value="Badung" {{ $user[0]->location == 'Badung' ? 'selected' : '' }}>Badung</option>
-                            <option value="Gianyar" {{ $user[0]->location == 'Gianyar' ? 'selected' : '' }}>Gianyar</option>
-                            <option value="Klungkung" {{ $user[0]->location == 'Klungkung' ? 'selected' : '' }}>Klungkung</option>
-                            <option value="Bangli" {{ $user[0]->location == 'Bangli' ? 'selected' : '' }}>Bangli</option>
-                            <option value="Karangasem" {{ $user[0]->location == 'Karangasem' ? 'selected' : '' }}>Karangasem</option>
-                            <option value="Singaraja" {{ $user[0]->location == 'Singaraja' ? 'selected' : '' }}>Singaraja</option>
-                            <option value="Negara" {{ $user[0]->location == 'Negara' ? 'selected' : '' }}>Negara</option>
-                            <option value="Tabanan" {{ $user[0]->location == 'Tabanan' ? 'selected' : '' }}>Tabanan</option>
-                            <option value="Nusa-Penida" {{ $user[0]->location == 'Nusa-Penida' ? 'selected' : '' }}>Nusa Penida</option>
+                            @foreach ($locations as $location)
+                                    <option value="{{$location->regency}}" {{ $user[0]->location == $location->regency ? 'selected' : '' }}>{{$location->regency}}</option>
+                            @endforeach
                         </select>
                         @error('location')
                         <span class="invalid-feedback" role="alert">
