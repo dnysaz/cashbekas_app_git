@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{url('/css/custom.css')}}">
     {{-- Bootstap Icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <title>Cashbekas.com</title>
+    <title>cashbekas.com</title>
   </head>
   <style>
    
@@ -49,20 +49,9 @@
                     </div>
     
                 </form>
-    
-                <div class="row mt-2 text-muted">
-                    <div class="col-md-4 text-center">
-                        <p class="small"><a href="#">Kategori Pencarian</a></p>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <p class="small"><a href="#">Kategori Iklan</a></p>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <p class="small"><a href="#">Lokasi Iklan</a></p>
-                    </div>
-                </div>
-    
+                
             </div>
+
             <div class="col-md-2 text-center">
                 @auth
                     <a href="{{url('user_dashboard')}}" class="text-muted">Dashboard <br/> <i class="bi bi-person-circle"></i> {{auth()->user()->name}}</a>
@@ -72,7 +61,9 @@
                    </div>
                 @endauth
             </div>
+
         </div>
+
     </div>
 
     <div class="">

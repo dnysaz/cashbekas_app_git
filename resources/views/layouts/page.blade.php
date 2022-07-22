@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{url('/css/custom.css')}}">
     {{-- Bootstap Icon --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <title>Cashbekas.com</title>
+    <title>cashbekas.com</title>
   </head>
   <style>
    
@@ -50,18 +50,6 @@
     
                 </form>
     
-                <div class="row mt-2 text-muted">
-                    <div class="col-md-4 text-center">
-                        <p class="small"><a href="#">Kategori Pencarian</a></p>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <p class="small"><a href="#">Kategori Iklan</a></p>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <p class="small"><a href="#">Lokasi Iklan</a></p>
-                    </div>
-                </div>
-    
             </div>
             <div class="col-md-2 text-center">
                 @auth
@@ -75,7 +63,7 @@
         </div>
     </div>
     <div class="">
-        <div class="mt-2">
+        <div class="mt-4">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -190,6 +178,23 @@
 
     </div>
 
+    <div class="row mt-5 mb-5">
+
+        @foreach ($categories as $category)
+            <div class="col-md-3 mt-4">
+                <h6 class="text-muted"><a href="{{url('c/'.$category->category)}}">{{$category->category}}</a></h6>
+                <a href="{{url('c/'.$category->category)}}">
+                    <div class="small text-muted"> <li>{{$category->sub_1}}</li></div>
+                    <div class="small text-muted"> <li>{{$category->sub_2}}</li></div>
+                    <div class="small text-muted"> <li>{{$category->sub_3}}</li></div>
+                    <div class="small text-muted"> <li>{{$category->sub_4}}</li></div>
+                    <div class="small text-muted"> <li>{{$category->sub_5}}</li></div>
+                </a>
+            </div>
+        @endforeach
+        
+    </div>
+
     <!-- Bottom Navbar for mobile menu -->
     <nav class="navbar navbar-dark bg-primary navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none p-0">
         <ul class="navbar-nav nav-justified w-100">
@@ -238,26 +243,6 @@
             </li>
         </ul>
     </nav>
-
-    <footer class="mt-2  text-muted">
-        
-        <div class="row">
-            <div class="col-md-4 mt-5 text-muted">
-                <p class="p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur fugiat ducimus eligendi quo, architecto perferendis iure veniam nobis mollitia ea, iusto natus numquam, harum modi voluptate delectus. Libero, est inventore.</p>
-            </div>
-            <div class="col-md-4 mt-5 text-muted">
-                <p class="p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur fugiat ducimus eligendi quo, architecto perferendis iure veniam nobis mollitia ea, iusto natus numquam, harum modi voluptate delectus. Libero, est inventore.</p>
-            </div>
-            <div class="col-md-4 mt-5 text-muted">
-                <p class="p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur fugiat ducimus eligendi quo, architecto perferendis iure veniam nobis mollitia ea, iusto natus numquam, harum modi voluptate delectus. Libero, est inventore.</p>
-            </div>
-        </div>
-
-        <div class="text-center text-muted p-3">
-            © 2020 Copyright : <a class="text-muted" href="{{url('/')}}">cashbekas.com</a>
-        </div>
-
-    </footer>        
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

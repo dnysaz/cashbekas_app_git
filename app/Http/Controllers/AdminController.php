@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // use App\Models\Admin;
 use App\Models\User;
 use App\Models\Ads;
+use Illuminate\Support\Str;
 
 use App\Models\Location;
 use App\Models\Category;
@@ -50,8 +51,7 @@ class AdminController extends Controller
     {
         // $status  = 'pending';
 
-        $ads = Ads::where('ads_id',$ads_id)
-        ->get();
+        $ads = Ads::where('ads_id',$ads_id)->get();
 
         $user = User::where('user_id',$user_id)->get();
 
@@ -182,11 +182,80 @@ class AdminController extends Controller
 
     }
 
+    // CRUD CATEGORY FUNCTION 
 
+    // VIEW CATEGORY PAGE
     public function view_category() 
     {
         $categories = Category::get();
         return view('admin.view_category')->with('categories',$categories);
+    }
+
+    // CREATE NEW CATEGORY FUNCTION 
+    public function create_new_category(Request $request)
+    {
+        $data = ([
+            'category' => $request->category,
+            'sub_1'    => $request->sub_1,
+            'sub_2'    => $request->sub_2,
+            'sub_3'    => $request->sub_3,
+            'sub_4'    => $request->sub_4,
+            'sub_5'    => $request->sub_5,
+            'user'     => Auth::user()->name,
+            'slug'     => Str::slug($request->category)
+        ]);
+
+        try {
+
+            Category::create($data);
+            return redirect()->back()->with('success','Category has been added successfully!');
+
+        } catch (Exception $e) {
+
+            return redirect()->back()->with('error','Upss..something went wrong! Please try again later.');
+
+        }
+    }
+
+    // VIEW EDIT CATEGORY PAGE
+    public function edit_category($slug)
+    {
+        $categories = Category::get();
+        $data_categories = Category::where('slug',$slug)->get();
+        return view('admin.edit_category')->with('data_categories',$data_categories)->with('categories',$categories);
+    }
+
+    // UPDATE CATEGORY FUNCTION 
+    public function update_category(Request $request, $slug)
+    {
+        $data = ([
+            'category' => $request->category,
+            'sub_1'    => $request->sub_1,
+            'sub_2'    => $request->sub_2,
+            'sub_3'    => $request->sub_3,
+            'sub_4'    => $request->sub_4,
+            'sub_5'    => $request->sub_5,
+            'user'     => Auth::user()->name,
+            'slug'     => Str::slug($request->category)
+        ]);
+
+        try {
+
+            Category::where('slug',$slug)->update($data);
+            return redirect('view_category')->with('success','Category has been updated successfully!');
+
+        } catch (Exception $e) {
+
+            return redirect()->back()->with('error','Upss..something went wrong! Please try again later.');
+
+        }
+    }
+
+    // DELETE CATEGORY FUNCTION 
+    public function delete_category($slug)
+    {
+        Category::where('slug',$slug)->delete();
+        return redirect()->back()->with('success','Category has been deleted successfully!');
     }
 
     public function view_location() 

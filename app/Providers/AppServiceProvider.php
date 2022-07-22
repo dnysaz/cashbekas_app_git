@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use App\Models\Category;
+use App\Models\Location;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,10 +28,21 @@ class AppServiceProvider extends ServiceProvider
     {
         Paginator::useBootstrap();
 
-        $this->data = Category::get();
-
+        // get all category from database 
+        $this->category = Category::get();
         view()->composer('layouts.page', function($view) {
-            $view->with(['categories' => $this->data]);
+            $view->with(['categories' => $this->category]);
         });
+
+        // get all location from database
+        $this->location = Location::get();
+        view()->composer('layouts.page', function($view) {
+            $view->with(['locations' => $this->location]);
+        });
+
+
+        
+
+
     }
 }

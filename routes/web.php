@@ -19,6 +19,10 @@ Route::get('{category}/{location}/{link}/{user_id}', [PageController::class, 'ad
 Route::get('c/{category}', [PageController::class, 'show_category']);
 Route::get('l/{location}', [PageController::class, 'show_location']);
 
+// show ads by category and sub category 
+Route::get('show_ads/{category}/{sub_category}', [PageController::class, 'show_ads_category']);
+
+
 
 Route::post('filter_ads',[PageController::class, 'filter_ads']);
 Route::get('search_ads',[PageController::class, 'search_ads']);
@@ -70,6 +74,14 @@ Route::middleware(['admin'])->group(function () {
 
     // view category and location menu
     Route::get('view_category', [AdminController::class, 'view_category']);
+    Route::get('edit_category/{slug}', [AdminController::class, 'edit_category']);
+
+    Route::get('delete_category/{slug}', [AdminController::class, 'delete_category']);
+    
+    Route::post('create_new_category', [AdminController::class, 'create_new_category']);
+    Route::post('update_category/{slug}', [AdminController::class, 'update_category']);
+
+
     Route::get('view_location', [AdminController::class, 'view_location']);
 
 
@@ -97,11 +109,8 @@ Route::middleware(['auth','verified'])->group(function () {
 
     // user dashboard web routes
     Route::get('user_dashboard', [UserController::class, 'user_dashboard']);
-
     Route::get('view_user/{user_id}', [UserController::class, 'view_user']);
-
     Route::get('update_profile/{user_id}', [UserController::class, 'update_profile']);
-
     Route::post('simpan_profile/{user_id}', [UserController::class, 'simpan_profile']);
 
 

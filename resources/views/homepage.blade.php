@@ -95,10 +95,34 @@
 
 </div>
 
-<div class="mt-2 text-center" style="max-height: 250px; overflow:hidden;">
+<div class="mt-2 text-center" style="max-height: 550px; overflow:hidden;">
 
-    <img class="img-fluid" src="https://img.freepik.com/free-vector/large-sale-word-with-shopping-cart-gift-boxes-store-map-with-pointer-realistic-style-vector-illustration_548887-126.jpg?t=st=1654849363~exp=1654849963~hmac=3747d56ee9889041c0afea17d6f29005bde37901042d7790b23176d334123efb&w=740" alt="">
+    <img class="img-fluid" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fliburanbali.net%2Fwp-content%2Fuploads%2F2019%2F06%2FHeader-Image-LB.png&f=1&nofb=1" alt="">
 
 </div>
+
+<footer class="mt-3 mb-5  text-muted">
+        
+    <div class="row">
+        <div class="col-md-4 text-muted">
+            <p class="p-2 small">Cashbekas.com adalah sebuah platform digital yang membantu anda anda, masyarakat dan penggerak UMKM dalam rangka mempromosikan barang jualan yang masuk kategori "bekas". Kami membantu menjadikan tempat dimana para penjual dan pembeli bertemu secara digital dengan cepat, mudah dan aman.</p>
+        </div>
+        <div class="col-md-4 text-muted">
+            <p class="p-2 small">Fokus kami adalah membantu memasarkan barang-barang "second hand" yang biasa kita kenal dengan barang bekas. Kenapa barang bekas? karena ini adalah barang yang sudah tidak terpakai bagi seseorang dan mungkin akan berguna bagi orang lainya. Makan kami menyediakan tempat dimana bisa mempertemukan itu.</p>
+        </div>
+        <div class="col-md-4 text-muted">
+            <p class="p-2 small">Kami percaya, diera digital ini semua lini akan masuk pada tempat dimana orang-orang akan mudah untuk mencarinya. Baik itu keperluan rumah tangga, elektronika, kendaraan bahkan properti. Kami ingin menjadi bagian dari perjuangan masyarakat dalam mengiklankan barang atau jasa mereka.</p>
+        </div>
+    </div>
+
+    <div class="text-center mt-2 mb-2">
+        <p class="small text-muted"> Untuk saat ini cashbekas.com hanya dapat diakses dan digunakan oleh masyarakat Bali dan sekitarnya. </p>
+    </div>
+
+    <div class="text-center text-muted p-3 mb-5">
+        © 2020 Copyright : <a class="text-muted" href="{{url('/')}}">cashbekas.com</a>
+    </div>
+
+</footer>  
 
 @endsection

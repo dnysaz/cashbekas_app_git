@@ -93,9 +93,7 @@
                                 style="color:transparent; width:100px;"/>
                                 <div class="mt-2">Foto utama</div>
                                 @error('photo1')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
+                                    <div class="alert alert-danger small">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -111,6 +109,9 @@
                                 onchange="previewImage2(event)"
                                 style="color:transparent; width:105px;"/>
                                 <div class="mt-2">Foto 2</div>
+                                @error('photo2')
+                                    <div class="alert alert-danger small">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-md-4 text-center">
@@ -125,6 +126,9 @@
                                 onchange="previewImage3(event)"
                                 style="color:transparent; width:105px;"/>
                                 <div class="mt-2">Foto 3</div>
+                                @error('photo3')
+                                    <div class="alert alert-danger small">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -266,7 +270,7 @@
                             </div>
                         </div>
                         <div class="p-3 mt-2">
-                            <div><h5>Syarat Dan Ketentuan</h5></div>
+                            <div class="text-primary"><h4>Syarat Dan Ketentuan</h4></div>
                             <input
                             type="checkbox"
                             name="agreement"
@@ -279,7 +283,7 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
-                            <p class="small mt-1">Dengan mengklik setuju mendakan saya telah menerima semua <a href="#">Syarat Dan Ketentuan</a> dalam mengiklankan barang atau jasa yang saya tawarkan.</p> 
+                            <p class="small mt-1">Dengan mengklik setuju mendakan saya telah menerima semua <a href="#">Syarat Dan Ketentuan</a> dalam mengiklankan barang atau jasa yang saya tawarkan di situs <span class="text-primary">cashbekas.com</span></p> 
                         </div>
                         <div class="p-3 mt-3 mb-5">
                             <input type="checkbox" name="draft" value="draft" id="draft">

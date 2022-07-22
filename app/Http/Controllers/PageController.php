@@ -210,13 +210,17 @@ class PageController extends Controller
         
     }
 
+    // show ads by category and location 
+
     public function show_category($category)
 
     {
         $status  = 'actived';
 
         $ads = Ads::where('category',$category)->where('status',$status)->latest()->paginate(20);
-        return view('page.category')->with('ads',$ads)->with('category',$category);
+        $categories = Category::where('category', $category)->get();
+      
+        return view('page.category')->with('ads',$ads)->with('category',$category)->with('categories',$categories);
     }
 
     public function show_location($location)
@@ -225,18 +229,32 @@ class PageController extends Controller
         $status  = 'actived';
 
         $ads = Ads::where('location',$location)->where('status',$status)->latest()->paginate(20);
-        return view('page.location')->with('ads',$ads)->with('location',$location);
+        $locations = Location::where('province', $location)->get();
+
+        return view('page.location')->with('ads',$ads)->with('location',$location)->with('locations',$locations);
     }
+
+    public function show_ads_category($category, $sub_category)
+
+    {
+        $status  = 'actived';
+
+        $ads = Ads::where('category',$category)->where('sub_category',$sub_category)->where('status',$status)->latest()->paginate(20);
+
+        return view('page.by_sub_category')->with('ads',$ads)->with('category',$category)->with('sub_category',$sub_category);
+    }
+
+
 
     public function create_post_ads(Request $request)
 
     {
         $validate = $request->validate([
-            'category'  =>'required',
-            'sub_category' => 'required',
             'photo1'    =>'required|image|mimes:jpg,png,jpeg|max:2048|',
             'photo2'    =>'required|image|mimes:jpg,png,jpeg|max:2048|',
             'photo3'    =>'required|image|mimes:jpg,png,jpeg|max:2048|',
+            'category'  =>'required',
+            'sub_category' => 'required',
             'title'     =>'required|min:10|max:160',
             'price'     =>'required',
             'condition' =>'required',

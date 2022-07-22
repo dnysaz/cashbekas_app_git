@@ -75,7 +75,7 @@
             @endforeach
             
             @else
-            <div class="mt-4 text-muted">
+            <div class="mt-4 text-muted text-center">
                 <h4>Belum ada iklan yang dapat ditampilkan</h4>
             </div>
             @endif

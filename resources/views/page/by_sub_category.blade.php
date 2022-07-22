@@ -1,19 +1,16 @@
-@extends('layouts.user')
+@extends('layouts.app')
 
 @section('app')
-    <div class="mt-3">
-        <form action="{{url('search_ads')}}" method="GET" class="form-group">
-            {{ csrf_field() }}
-            <input type="text" autofocus placeholder="Halo, lagi cari apa nih?" name="search_ads" class="form-control" name="" id="">
-            <input type="hidden" name="type_search" value="mobile">
-        </form>
-    </div>
-    <div class="">
 
-        @foreach ($categories as $category)
-            <span class="badge badge-primary m-1 p-1"><a href="{{url('c/'.$category->category)}}">{{$category->category}}</a></span>
-        @endforeach
-        
+    <section>
+        <div class="mt-2">
+            <h5 class="text-muted"><a href="{{url('all_page')}}"><span class="text-primary">Semua Iklan</span></a> / <a href="{{url('c/'.$category)}}"><span class="text-primary">{{$category}}</span></a> / <span class="text-primary">{{$sub_category}}</span> </h5>
+        </div>
+    </section>
+
+    <section id="new_ads" class="mt-4">
+        {{-- ads show area  --}}
+
         <ul class="row justify-content-center">
             @if(count($ads)>0)
             @foreach ($ads as $ad)
@@ -28,7 +25,7 @@
                 </a>
                 <div class="text-wrap">
                     <a href="#"><div class="small text-muted"> {{$ad->category}} </div></a>
-                   <a href="#"> <div class="small text-muted">{{$ad->location}} / {{$ad->created_at->diffForHumans()}}</div></a>
+                <a href="#"> <div class="small text-muted">{{$ad->location}} / {{$ad->created_at->diffForHumans()}}</div></a>
                 </div>
             </li>
             
@@ -40,5 +37,11 @@
             </div>
             @endif
         </ul>
-    </div>
+
+    </section>
+
+    <div class="text-center mt-5 mb-5">
+        <button class="btn btn-lg btn-secondary">Lihat Lainnya</button>
+    </div> 
+ 
 @endsection

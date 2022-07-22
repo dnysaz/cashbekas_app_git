@@ -165,7 +165,7 @@ class DatabaseSeeder extends Seeder
         Category::create([
             'category' => 'Properti',
             'slug' => 'properti',
-            'sub_1' => 'Rumah Dijual/Disewakan',
+            'sub_1' => 'Rumah Dijual Atau Disewakan',
             'sub_2' => 'Ruko Dan Usaha',
             'sub_3' => 'Villa Dan Hotel',
             'sub_4' => 'Tanah',
@@ -234,7 +234,7 @@ class DatabaseSeeder extends Seeder
             'category' => 'Pakaian Pria',
             'slug' => 'pakaian_pria',
             'sub_1' => 'Kaos Dan Kemeja',
-            'sub_2' => 'Celana Pendek / Celana Panjang',
+            'sub_2' => 'Celana Pendek Dan Celana Panjang',
             'sub_3' => 'Sepatu Dan Kaos',
             'sub_4' => 'Pakaian Dalam',
             'sub_5' => 'Pakaian Pria Lainya',
