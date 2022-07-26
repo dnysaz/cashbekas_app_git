@@ -20,7 +20,7 @@ class UserController extends Controller
 
         $user = User::where('user_id',$user_id)->get();
 
-        // check if user already verified account ot not 
+        // check if user already verified account or not 
         if($user[0]->email_verified_at !== null) {
 
             $verified = 'Akun Terverifikasi';

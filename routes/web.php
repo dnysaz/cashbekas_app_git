@@ -72,7 +72,7 @@ Route::middleware(['admin'])->group(function () {
     Route::get('all_user', [AdminController::class, 'all_user']);
 
 
-    // view category and location menu
+    // view category , location and banner menu
     Route::get('view_category', [AdminController::class, 'view_category']);
     Route::get('edit_category/{slug}', [AdminController::class, 'edit_category']);
 
@@ -83,6 +83,14 @@ Route::middleware(['admin'])->group(function () {
 
 
     Route::get('view_location', [AdminController::class, 'view_location']);
+
+
+    Route::get('view_banner', [AdminController::class, 'view_banner']);
+    Route::post('update_banner/{id}', [AdminController::class, 'update_banner']);
+
+
+
+
 
 
 

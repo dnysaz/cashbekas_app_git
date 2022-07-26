@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Banner;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,8 +41,11 @@ class AppServiceProvider extends ServiceProvider
             $view->with(['locations' => $this->location]);
         });
 
-
-        
+        // get all banner data from database
+        $this->banner = Banner::get();
+        view()->composer('layouts.page', function($view) {
+            $view->with(['banners' => $this->banner]);
+        });
 
 
     }

@@ -5,7 +5,7 @@
    <div style="margin-top:20px;" >
         <p>Hello, Admin</p>
         <p>Ada iklan baru masuk nih, dicek dulu yuk!</p>
-        <h2>Details Iklan:</h2>
+        <h3>Details Iklan:</h3>
         <div>Judul Iklan : {{$data['title']}} </div>
         <div>Harga : {{$data['price']}} </div>
         <div>Kategori Iklan : {{$data['category']}} </div>
@@ -13,7 +13,7 @@
         <div>Deskripsi Iklan : {{$data['desc']}} </div>
         <div>Status Iklan : {{$data['status']}} </div>
         <div>ID Iklan : {{$data['ads_id']}} </div>
-        <h2>Details Pengguna</h2>
+        <h3>Details Pengguna</h3>
         <div>Nama Pengguna : {{$data['name']}} </div>
         <div>Alamat Pengguna : {{$data['address']}} </div>
         <div>Kontak Pengguna : {{$data['phone']}} </div>

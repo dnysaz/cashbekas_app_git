@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Banner;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
@@ -262,6 +263,20 @@ class DatabaseSeeder extends Seeder
             // 'slug_3' => 'sepatu_dan_kaos',
             // 'slug_4' => 'pakaian_dalam',
             // 'slug_5' => 'pakaian_wanita_lain',
+        ]);
+
+
+
+        // seeders for banner images 
+
+        Banner::create([
+            'banner_1' => 'banner_1.jpg',
+            'banner_2' => 'banner_2.jpg',
+            'banner_3' => 'banner_3.jpg',
+            'banner_1_text' => 'Ini adalah text banner 1',
+            'banner_2_text' => 'Ini adalah text banner 2',
+            'banner_3_text' => 'Ini adalah text banner 3',
+            'user' => 'Administrator',
         ]);
     }
 }

@@ -64,28 +64,28 @@
     </div>
     <div class="">
         <div class="mt-4">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="cashbekas_banner_slide" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  <li data-target="#cashbekas_banner_slide" data-slide-to="0" class="active"></li>
+                  <li data-target="#cashbekas_banner_slide" data-slide-to="1"></li>
+                  <li data-target="#cashbekas_banner_slide" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img class="d-block w-100" src="https://images.tokopedia.net/img/cache/1208/NsjrJu/2022/7/5/65140579-1537-43b2-a88d-4c773b9b7bdb.jpg.webp?ect=3g" alt="First slide">
+                    <img class="img-fluid w-100" src="{{url('images/banners/'.$banners[0]->banner_1)}}" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="https://images.tokopedia.net/img/cache/1208/NsjrJu/2022/7/5/34f69665-c953-42f2-b2bd-9b1f5923370a.jpg.webp?ect=3g" alt="Second slide">
+                    <img class="img-fluid w-100" src="{{url('images/banners/'.$banners[0]->banner_2)}}" alt="Second slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block w-100" src="https://images.tokopedia.net/img/cache/1208/NsjrJu/2022/7/5/34f69665-c953-42f2-b2bd-9b1f5923370a.jpg.webp?ect=3g" alt="Third slide">
+                    <img class="img-fluid w-100" src="{{url('images/banners/'.$banners[0]->banner_3)}}" alt="Third slide">
                   </div>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <a class="carousel-control-prev" href="#cashbekas_banner_slide" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                   <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <a class="carousel-control-next" href="#cashbekas_banner_slide" role="button" data-slide="next">
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
