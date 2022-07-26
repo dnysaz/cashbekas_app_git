@@ -86,6 +86,8 @@ Route::middleware(['admin'])->group(function () {
 
 
     Route::get('view_banner', [AdminController::class, 'view_banner']);
+    Route::get('delete_banner/{id}', [AdminController::class, 'delete_banner']);
+
     Route::post('update_banner/{id}', [AdminController::class, 'update_banner']);
 
 

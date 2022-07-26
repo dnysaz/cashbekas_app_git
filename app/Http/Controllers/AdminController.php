@@ -265,34 +265,47 @@ class AdminController extends Controller
     }
 
 
+
+    // CRUD BANNER AREA 
+
+    // VIEW BANNER IN SETTINGS
     public function view_banner()
     {
-        $banners = Banner::get();
-        return view('admin.view_banner')->with('banners',$banners);
-    }
+        $banner_1 = Banner::where('id','1')->get();
+        $banner_2 = Banner::where('id','2')->get();
+        $banner_3 = Banner::where('id','3')->get();
 
+        return view('admin.view_banner')->with('banner_1',$banner_1)->with('banner_2',$banner_2)->with('banner_3',$banner_3);
+    }  
+
+    // DELETE BANNER 
+    // public function delete_banner($id)
+    // {
+    //     Banner::where('id',$id)->delete();
+    //     return redirect()->back()->with('success','Banner with ID '.$id.' has been deleted successfully!');
+    // }
+
+
+    // UPDATE BANNER IN SETTINGS 
     public function update_banner(Request $request, $id)
     {
-        $banner_1 = $request->validate(['banner_1'  => 'image|mimes:jpg,png,jpeg|max:2048|']);
-        $banner_2 = $request->validate(['banner_2'  => 'image|mimes:jpg,png,jpeg|max:2048|']);
-        $banner_3 = $request->validate(['banner_3'  => 'image|mimes:jpg,png,jpeg|max:2048|']);
+        $banner = $request->validate(['banner'  => 'image|mimes:jpg,png,jpeg|max:2048|']);
+        $banner_text = $request->banner_text;
 
-        if($banner_1 == [] && $banner_2 == [] && $banner_3 == [] ) {
+        // IF BANNER IMAGE IS EMPTY 
+        if($banner == []) {
 
-           $data = [
+            $data = [
 
-            'banner_1_text' => $request->banner_1_text,
-            'banner_2_text' => $request->banner_2_text,
-            'banner_3_text' => $request->banner_3_text,
-            'user'          => Auth::user()->name,
+                'banner_text' => $banner_text,
+                'user'        => Auth::user()->name,
+            ];
 
-           ];
-
-           try {
+            try {
 
             Banner::where('id',$id)->update($data);
 
-            return redirect()->back()->with('success','Banner has been updated successfully!');
+            return redirect()->back()->with('success','Banner text '.$id.' has been updated successfully!');
 
             } catch (Exception $e) {
 
@@ -300,115 +313,34 @@ class AdminController extends Controller
 
             }
 
-        } elseif($banner_1 == [] ) {
 
-            $banner_2 = $request->banner_2;
-            $banner_3 = $request->banner_3;
+        } else {
 
-            $name_2 = Str::random(10);
-            $name_3 = Str::random(10);
+            // IF BANNER IMAGE IS FILLABLE 
+            $banner = $request->banner;
+            $name = Str::random(6);
+            $ext = strtolower($banner->getClientOriginalExtension());
+            $banner_name = $name.'.'.$ext;
+            $upload_path = 'images/banners/';
+            $banner->move($upload_path, $banner_name);
 
-            $ext_2 = strtolower($banner_2->getClientOriginalExtension());
-            $ext_3 = strtolower($banner_3->getClientOriginalExtension());
+            $data = [
 
-            $banner_2_name = $name_2.'.'.$ext_2; 
-            $banner_3_name = $name_3.'.'.$ext_3; 
+                'banner' => $banner_name,
+                'banner_text' => $banner_text,
+                'user' => Auth::user()->name,
+            ];
 
-            $upload_path = 'images/banners/'; 
+            try {
 
-            $banner_2->move($upload_path, $banner_2_name); 
-            $banner_3->move($upload_path, $banner_3_name); 
-
-           $data = [
-
-                'banner_2' => $banner_2_name,
-                'banner_3' => $banner_3_name, 
-           ];
-
-           try {
-
-            Banner::where('id',$id)->update($data);
-
-            return redirect()->back()->with('success','Banner has been updated successfully!');
-
-            } catch (Exception $e) {
-
-            return redirect()->back()->with('error','Something went wrong! Please try again later.');
-
-            }
-
-        } elseif($banner_2 == [] ) {
-
-            $banner_1 = $request->banner_1;
-            $banner_3 = $request->banner_3;
-
-            $name_1 = Str::random(10);
-            $name_3 = Str::random(10);
-
-            $ext_1 = strtolower($banner_1->getClientOriginalExtension());
-            $ext_3 = strtolower($banner_3->getClientOriginalExtension());
-
-            $banner_1_name = $name_1.'.'.$ext_1; 
-            $banner_3_name = $name_3.'.'.$ext_3; 
-
-            $upload_path = 'images/banners/'; 
-
-            $banner_1->move($upload_path, $banner_1_name); 
-            $banner_3->move($upload_path, $banner_3_name); 
-
-           $data = [
-
-                'banner_1' => $banner_1_name,
-                'banner_3' => $banner_3_name, 
-           ];
-
-           try {
-
-            Banner::where('id',$id)->update($data);
-
-            return redirect()->back()->with('success','Banner has been updated successfully!');
-
-            } catch (Exception $e) {
-
-            return redirect()->back()->with('error','Something went wrong! Please try again later.');
-
-            }
-
-        } elseif($banner_3 == [] ) {
-
-            $banner_2 = $request->banner_2;
-            $banner_1 = $request->banner_1;
-
-            $name_2 = Str::random(10);
-            $name_1 = Str::random(10);
-
-            $ext_2 = strtolower($banner_2->getClientOriginalExtension());
-            $ext_1 = strtolower($banner_1->getClientOriginalExtension());
-
-            $banner_2_name = $name_2.'.'.$ext_2; 
-            $banner_1_name = $name_1.'.'.$ext_1; 
-
-            $upload_path = 'images/banners/'; 
-
-            $banner_2->move($upload_path, $banner_2_name); 
-            $banner_1->move($upload_path, $banner_1_name); 
-
-           $data = [
-
-                'banner_2' => $banner_2_name,
-                'banner_1' => $banner_1_name, 
-           ];
-
-           try {
-
-            Banner::where('id',$id)->update($data);
-
-            return redirect()->back()->with('success','Banner has been updated successfully!');
-
-            } catch (Exception $e) {
-
-            return redirect()->back()->with('error','Something went wrong! Please try again later.');
-
+                Banner::where('id',$id)->update($data);
+    
+                return redirect()->back()->with('success','Banner text and Banner Image '.$id.' has been updated successfully!');
+    
+                } catch (Exception $e) {
+    
+                return redirect()->back()->with('error','Something went wrong! Please try again later.');
+    
             }
 
         }

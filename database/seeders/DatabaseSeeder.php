@@ -270,12 +270,20 @@ class DatabaseSeeder extends Seeder
         // seeders for banner images 
 
         Banner::create([
-            'banner_1' => 'banner_1.jpg',
-            'banner_2' => 'banner_2.jpg',
-            'banner_3' => 'banner_3.jpg',
-            'banner_1_text' => 'Ini adalah text banner 1',
-            'banner_2_text' => 'Ini adalah text banner 2',
-            'banner_3_text' => 'Ini adalah text banner 3',
+            'banner' => 'banner_1.jpg',
+            'banner_text' => 'Ini adalah text banner 1',
+            'user' => 'Administrator',
+        ]);
+
+        Banner::create([
+            'banner' => 'banner_2.jpg',
+            'banner_text' => 'Ini adalah text banner 2',
+            'user' => 'Administrator',
+        ]);
+
+        Banner::create([
+            'banner' => 'banner_3.jpg',
+            'banner_text' => 'Ini adalah text banner 3',
             'user' => 'Administrator',
         ]);
     }

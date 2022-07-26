@@ -92,7 +92,7 @@ class UserController extends Controller
 
             // update user details dengan foto 
 
-            $photo = $request->photo; //ambil foto
+            $photo = $request->photo;
             $name = Str::random(10); //beri nama 
             $ext = strtolower($photo->getClientOriginalExtension()); //ambil extension file
             $photo_name = $name.'.'.$ext; //gabungkan nama dan extension
