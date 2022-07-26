@@ -30,16 +30,16 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         // get all category from database 
-        $this->category = Category::get();
-        view()->composer('layouts.page', function($view) {
-            $view->with(['categories' => $this->category]);
-        });
+        // $this->category = Category::get();
+        // view()->composer('layouts.page', function($view) {
+        //     $view->with(['categories' => $this->category]);
+        // });
 
         // get all location from database
-        $this->location = Location::get();
-        view()->composer('layouts.page', function($view) {
-            $view->with(['locations' => $this->location]);
-        });
+        // $this->location = Location::get();
+        // view()->composer('layouts.page', function($view) {
+        //     $view->with(['locations' => $this->location]);
+        // });
 
         // get all banner data from database
         $this->banner = Banner::get();
