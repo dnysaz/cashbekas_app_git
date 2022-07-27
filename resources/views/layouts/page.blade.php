@@ -72,13 +72,13 @@
                 </ol>
                 <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img class="img-fluid w-100" src="{{url('images/banners/'.$banners[0]->banner_1)}}" alt="First slide">
+                    <img class="img-fluid w-100" src="{{url('images/banners/'.$banner_1[0]->banner)}}" alt="First slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="img-fluid w-100" src="{{url('images/banners/'.$banners[0]->banner_2)}}" alt="Second slide">
+                    <img class="img-fluid w-100" src="{{url('images/banners/'.$banner_2[0]->banner)}}" alt="Second slide">
                   </div>
                   <div class="carousel-item">
-                    <img class="img-fluid w-100" src="{{url('images/banners/'.$banners[0]->banner_3)}}" alt="Third slide">
+                    <img class="img-fluid w-100" src="{{url('images/banners/'.$banner_3[0]->banner)}}" alt="Third slide">
                   </div>
                 </div>
                 <a class="carousel-control-prev" href="#cashbekas_banner_slide" role="button" data-slide="prev">

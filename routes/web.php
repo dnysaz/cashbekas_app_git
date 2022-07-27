@@ -32,7 +32,7 @@ Route::get('search_page',[PageController::class, 'search_page']);
 
 
 
-
+// TEST PAGE ROUTE
 Route::get('test', [PageController::class, 'test']);
 
 
@@ -85,9 +85,9 @@ Route::middleware(['admin'])->group(function () {
     Route::get('view_location', [AdminController::class, 'view_location']);
 
 
+    // ROUTE FOR BANNER CRUD
     Route::get('view_banner', [AdminController::class, 'view_banner']);
     Route::get('delete_banner/{id}', [AdminController::class, 'delete_banner']);
-
     Route::post('update_banner/{id}', [AdminController::class, 'update_banner']);
 
 
