@@ -79,6 +79,8 @@
                                             <a class="nav-link" href="{{url('view_category')}}">Categories</a>
                                             <a class="nav-link" href="{{url('view_location')}}">Locations</a>
                                             <a class="nav-link" href="{{url('view_banner')}}">Banner Images</a>
+                                            <a class="nav-link" href="{{url('view_main_page')}}">Main Page</a>
+                                            <a class="nav-link" href="{{url('view_footer_page')}}">Footer Page</a>
                                         </nav>
                                     </div>
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">

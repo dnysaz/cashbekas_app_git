@@ -91,6 +91,16 @@ Route::middleware(['admin'])->group(function () {
     Route::post('update_banner/{id}', [AdminController::class, 'update_banner']);
 
 
+    // route for CRUD main pages
+    Route::get('view_main_page', [AdminController::class, 'view_main_page']);
+
+    // route for foofter text 
+    Route::get('view_footer_page', [AdminController::class, 'view_footer_page']);
+    Route::post('update_footer_text/{id}', [AdminController::class, 'update_footer_text']);
+
+
+
+
 
 
 

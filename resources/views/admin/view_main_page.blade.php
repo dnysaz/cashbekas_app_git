@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('app')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Location Settings</h1>
+    <h1 class="mt-4">Main Page Settings</h1>
     <ol class="breadcrumb mb-4">
         {{-- <li class="breadcrumb-item active"> Category List</li> --}}
     </ol>
@@ -27,7 +27,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="mt-2">
-                <h5>Add Location</h5>
+                <h5>Edit Main Page</h5>
                 <hr>
                 <form class="form-group" action="" method="POST" >
                     {{ csrf_field() }}
@@ -50,24 +50,34 @@
         </div>
         <div class="col-md-6">
             <div class="mt-2">
-                <h5>Location List</h5>
+                <h5>Main Page View</h5>
                 <hr>
-
                     <div class="mt-1">
                         <div class="row">
-                            <div class="col-md-8">
-                                <h6>{{$locations[0]->province}} <span style="margin-left:50px;" ></h6>
-                                @foreach ($locations as $location)
-                                    <li>{{$location->regency}}</li>
-                                @endforeach
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mt-2"><a href="{{url('edit_category/'.$locations[0]->province)}}">Edit</a> / <a class="text-danger" href="{{url('delete_category/'.$locations[0]->province)}}">Delete</a></div>
+                            <div class="col-md-12">
+                               <div class="mt-4">Site Name : {!!$main_pages[0]->sitename!!}</div>
+                               <hr>
+                               <div class="mt-4">Header Text : {!!$main_pages[0]->header_text!!}</div>
+                               <hr>
+                               <div class="mt-4">SIte Logo : <br> <img class="mt-2 img-fluid" src="{{url('images/main_pages/'.$main_pages[0]->sitelogo)}}" alt="{{$main_pages[0]->sitelogo}}"> </div>
+                               <hr>
+                               <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mt-4">Left Image : <br> <img class="mt-2 img-fluid" src="{{url('images/main_pages/'.$main_pages[0]->left_image)}}" alt="{{$main_pages[0]->left_image}}"> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mt-4">Right Image : <br> <img class="mt-2 img-fluid" src="{{url('images/main_pages/'.$main_pages[0]->right_image)}}" alt="{{$main_pages[0]->right_image}}"> </div>
+                                    </div>
+                               </div>
+                               <hr>
+                               <div class="mt-4">Body Image : <br> <img class="mt-2 img-fluid" src="{{url('images/main_pages/'.$main_pages[0]->body_image)}}" alt="{{$main_pages[0]->body_image}}"> </div>
+                               <hr>
+                               <div class="mt-4">Bottom Image : <br> <img class="mt-2 img-fluid" src="{{url('images/main_pages/'.$main_pages[0]->bottom_image)}}" alt="{{$main_pages[0]->bottom_image}}"> </div>
+                               <hr>
                             </div>
                         </div>
                         <hr>
                     </div>
-    
             </div>
         </div>
     </div>

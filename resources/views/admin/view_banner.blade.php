@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('app')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Banner Images</h1>
+    <h1 class="mt-4">Banner Images Settings</h1>
     <ol class="breadcrumb mb-4">
         {{-- <li class="breadcrumb-item active"> Category List</li> --}}
     </ol>

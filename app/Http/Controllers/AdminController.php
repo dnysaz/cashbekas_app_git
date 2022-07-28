@@ -11,7 +11,8 @@ use Illuminate\Support\Str;
 use App\Models\Location;
 use App\Models\Category;
 use App\Models\Banner;
-
+use App\Models\Footer;
+use App\Models\MainPage;
 use Exception;
 use Illuminate\Support\Facades\Auth;
 
@@ -347,5 +348,48 @@ class AdminController extends Controller
 
     }
 
+    // function for main page CRUD
+    public function view_main_page()
+    {
+        $main_pages =  MainPage::where('id',1)->get();
+
+        // dd($main_pages);
+
+        return view('admin.view_main_page')->with('main_pages',$main_pages);
+    }
+
+
+    // function for footer page 
+    public function view_footer_page()
+    {
+        $footers = Footer::where('id',1)->get();
+
+        return view('admin.view_footer_page')->with('footers',$footers);
+    }
+
+    public function update_footer_text(Request $request, $id)
+    {
+        $data = [
+
+            'left_text' => $request->left_text,
+            'middle_text' => $request->middle_text,
+            'right_text' => $request->right_text,
+            'bottom_text' => $request->bottom_text,
+            'copyright_text' => $request->copyright_text,
+        ];
+
+        try {
+
+            Footer::where('id',$id)->update($data);
+
+            return redirect()->back()->with('success','Footer text has been updated successfully!');
+
+            } catch (Exception $e) {
+
+            return redirect()->back()->with('error','Something went wrong! Please try again later.');
+
+        }
+        
+    }
     
 }

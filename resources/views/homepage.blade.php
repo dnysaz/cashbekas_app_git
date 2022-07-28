@@ -5,15 +5,15 @@
 <div class="row mt-4 align-item-center">
 
     <div class="col-md-3 text-center mt-2">
-        <img class="img-fluid" style="width: 200px;" src="https://img.freepik.com/free-vector/add-cart-concept-illustration_114360-1445.jpg?t=st=1654780713~exp=1654781313~hmac=d1de1ee8150283bb4a10886bae8802f79cdf043b957ac27be924673711ccf48e&w=740" alt="">
+        <img class="img-fluid" style="width: 200px;" src="{{url('images/main_pages/'.$main_pages[0]->left_image)}}" alt="">
     </div>
 
     <div class="col-md-6 text-center mt-4">
-        <p class="display-4 text-muted"><span class="text-danger" style="font-weight: 700;">Jual</span> dan <span class="text-primary" style="font-weight: 700;">Beli</span> barang bekas jadi lebih mudah.</p>
+        <p class="display-4 text-muted">{!!$main_pages[0]->header_text!!}</p>
     </div>
 
     <div class="col-md-3 text-center mt-2">
-        <img class="img-fluid" style="width: 200px;" src="https://img.freepik.com/free-vector/online-wishes-list-concept-illustration_114360-3900.jpg?t=st=1654762207~exp=1654762807~hmac=d6e413950b6c25715a40d93018f60afe228fb8dead70fcb64ea6f00877a3e891&w=740" alt="">
+        <img class="img-fluid" style="width: 200px;" src="{{url('images/main_pages/'.$main_pages[0]->right_image)}}" alt="">
     </div>
 
 </div>
@@ -44,7 +44,7 @@
 
 <div class="text-center">
 
-    <img class="img-fluid" src="https://img.freepik.com/free-vector/flat-hand-drawn-flea-market-illustration-with-people_23-2148829660.jpg?t=st=1654787786~exp=1654788386~hmac=565385fe67143d7b08ab34de421baba13becf93befb57bdd5c4ebd5c7dfc7bf3&w=826" alt="">
+    <img class="img-fluid" src="{{url('images/main_pages/'.$main_pages[0]->body_image)}}" alt="">
 
 </div>
 
@@ -97,7 +97,7 @@
 
 <div class="mt-2 text-center" style="max-height: 550px; overflow:hidden;">
 
-    <img class="img-fluid" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fliburanbali.net%2Fwp-content%2Fuploads%2F2019%2F06%2FHeader-Image-LB.png&f=1&nofb=1" alt="">
+    <img class="img-fluid" src="{{url('images/main_pages/'.$main_pages[0]->bottom_image)}}" alt="">
 
 </div>
 
@@ -105,23 +105,21 @@
         
     <div class="row">
         <div class="col-md-4 text-muted">
-            <p class="p-2 small">Cashbekas.com adalah sebuah platform digital yang membantu anda anda, masyarakat dan penggerak UMKM dalam rangka mempromosikan barang jualan yang masuk kategori "bekas". Kami membantu menjadikan tempat dimana para penjual dan pembeli bertemu secara digital dengan cepat, mudah dan aman.</p>
+            <p class="p-2 small">{!!$footers[0]->left_text!!}</p>
         </div>
         <div class="col-md-4 text-muted">
-            <p class="p-2 small">Fokus kami adalah membantu memasarkan barang-barang "second hand" yang biasa kita kenal dengan barang bekas. Kenapa barang bekas? karena ini adalah barang yang sudah tidak terpakai bagi seseorang dan mungkin akan berguna bagi orang lainya. Makan kami menyediakan tempat dimana bisa mempertemukan itu.</p>
+            <p class="p-2 small">{!!$footers[0]->middle_text!!}</p>
         </div>
         <div class="col-md-4 text-muted">
-            <p class="p-2 small">Kami percaya, diera digital ini semua lini akan masuk pada tempat dimana orang-orang akan mudah untuk mencarinya. Baik itu keperluan rumah tangga, elektronika, kendaraan bahkan properti. Kami ingin menjadi bagian dari perjuangan masyarakat dalam mengiklankan barang atau jasa mereka.</p>
+            <p class="p-2 small">{!!$footers[0]->right_text!!}</p>
         </div>
     </div>
 
     <div class="text-center mt-2 mb-2">
-        <p class="small text-muted"> Untuk saat ini cashbekas.com hanya dapat diakses dan digunakan oleh masyarakat Bali dan sekitarnya. </p>
+        <p class="small text-muted">{!!$footers[0]->bottom_text!!}</p>
     </div>
 
-    <div class="text-center text-muted p-3 mb-5">
-        © 2020 Copyright : <a class="text-muted" href="{{url('/')}}">cashbekas.com</a>
-    </div>
+    <div class="text-center text-muted p-3 mb-5">{!!$footers[0]->copyright_text!!}</div>
 
 </footer>  
 

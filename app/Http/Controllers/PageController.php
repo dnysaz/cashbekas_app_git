@@ -14,8 +14,8 @@ use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewAdsMail;
-
-
+use App\Models\Footer;
+use App\Models\MainPage;
 
 class PageController extends Controller
 {
@@ -28,11 +28,15 @@ class PageController extends Controller
 
     public function index()
 
-    {
+    {      
+        $main_pages = MainPage::where('id',1)->get();
+
+        $footers = Footer::where('id',1)->get();
+
         $categories = Category::get();
         $locations = Location::get();
 
-        return view('homepage')->with('categories',$categories)->with('locations',$locations);
+        return view('homepage')->with('categories',$categories)->with('locations',$locations)->with('main_pages',$main_pages)->with('footers',$footers);
     }
 
     public function all_page()  

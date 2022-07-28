@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\Banner;
+use App\Models\Footer;
+use App\Models\MainPage;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
@@ -286,5 +288,30 @@ class DatabaseSeeder extends Seeder
             'banner_text' => 'Ini adalah text banner 3',
             'user' => 'Administrator',
         ]);
+
+
+        // seeders for mainpage 
+        MainPage::create([
+            'sitename' => 'cash<span class="text-danger">bekas</span>',
+            'sitelogo'  => 'sitelogo.jpg',
+            'header_text' => '<span class="text-danger" style="font-weight: 700;">Jual</span> dan <span class="text-primary" style="font-weight: 700;">Beli</span> barang bekas jadi lebih mudah.',
+            'left_image'  => 'leftimage.jpg',
+            'right_image' => 'rightimage.jpg',
+            'body_image'    => 'bodyimage.jpg',
+            'bottom_image'  => 'bottomimage.jpg',
+        ]);
+
+
+        // seeders for footer 
+        Footer::create([
+            'left_text' => 'Cashbekas.com adalah sebuah platform digital yang membantu anda anda, masyarakat dan penggerak UMKM dalam rangka mempromosikan barang jualan yang masuk kategori "bekas". Kami membantu menjadikan tempat dimana para penjual dan pembeli bertemu secara digital dengan cepat, mudah dan aman.',
+            'middle_text' => 'Fokus kami adalah membantu memasarkan barang-barang "second hand" yang biasa kita kenal dengan barang bekas. Kenapa barang bekas? karena ini adalah barang yang sudah tidak terpakai bagi seseorang dan mungkin akan berguna bagi orang lainya. Makan kami menyediakan tempat dimana bisa mempertemukan itu.',
+            'right_text' => 'Kami percaya, diera digital ini semua lini akan masuk pada tempat dimana orang-orang akan mudah untuk mencarinya. Baik itu keperluan rumah tangga, elektronika, kendaraan bahkan properti. Kami ingin menjadi bagian dari perjuangan masyarakat dalam mengiklankan barang atau jasa mereka.',
+            'bottom_text' => 'Untuk saat ini cashbekas.com hanya dapat digunakan oleh masyarakat Bali dan sekitarnya.',
+            'copyright_text' => '2020-2022 | cashbekas.com',
+        ]); 
     }
+
+
+
 }
