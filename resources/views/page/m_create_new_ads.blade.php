@@ -25,25 +25,12 @@
 
   <body>
     <div class="container">
-        <div class="row mt-2 text-muted">
+        <div class="row mt-4 text-muted">
             <div class="col-md-9">
-                <a href="{{url('/all_page')}}" class="text-decoration-none text-muted"><h5>cash<span class="text-danger">bekas</span>.com</h5></a>
-                <h2>Pasang Iklan</h2>
-            </div>
-            <div class="col-md-3">
-                <div class="row">
-                    <div class="col-md-5 text-center">
-                        {{-- <img class="img-thumbnail rounded" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.kindpng.com%2Fpicc%2Fm%2F78-786207_user-avatar-png-user-avatar-icon-png-transparent.png&f=1&nofb=1" alt=""> --}}
-                    </div>
-                    <div class="col-md-7 mt-2">
-                        <div style="font-weight:700;"> <i class="bi bi-person-circle"></i> {{auth()->user()->name}} </div>
-                        <div style="font-weight:700;"> <a href="{{url('user_dashboard')}}">Dashboard</a></div>
-                    </div>
-                </div>
+                <h5>Detail Iklan</h5>
             </div>
         </div>
         <hr>
-
         {{-- error  --}}
 
         @if(session()->has('success'))
@@ -63,8 +50,8 @@
         </div>
         @endif
 
-        <div class="mt-4 card">
-            <h5 class="p-2 mt-1 text-muted">Kategori  <i class="bi bi-chevron-right"></i> {{$category}} <i class="bi bi-chevron-right"></i> {{$sub_category}} <i class="bi bi-chevron-right"></i> <a href="{{url('create_ads')}}">Ubah Kategori</a> </h5>
+        <div class="mt-4">
+            <p class="p-1 mt-1 text-muted">Kategori  <i class="bi bi-chevron-right"></i> {{$category}} <i class="bi bi-chevron-right"></i> {{$sub_category}} <i class="bi bi-chevron-right"></i> <a href="{{url('create_m_ads')}}">Ubah Kategori</a> </p>
         </div>
 
         <form action="{{url('create_ads')}}" onsubmit="return validate()" name="createForm" method="POST" enctype="multipart/form-data">
@@ -73,13 +60,12 @@
                 <input type="hidden" name="category" value="{{$category}}">
                 <input type="hidden" name="sub_category" value="{{$sub_category}}">
                 <div class="col-md-8">
-                    <h4 class="text-primary">Details Iklan</h4>
                     <span class="text-muted small">Berikan informasi sejelas mungkin tentang barang atau produk yang anda tawarkan.</span>
                     <div class="mt-3"><hr></div>
                     <h5>Pilih Foto Iklan</h5>
                     <div class="small text-muted">Foto wajib diisi 3 foto.</div>
                     <div class="row mt-3">
-                        <div class="col-md-4 text-center">
+                        <div class="col-4 text-center">
                             <div class="p-3" style="border: 2px solid #eeee; border-radius:20px;">
                                 <img class="img-fluid" style="width: 150px;" id="preview_1">
                                 <input
@@ -90,14 +76,14 @@
                                 id="photo1"
                                 class="@error('photo1') is-invalid @enderror"
                                 onchange="previewImage1(event)"
-                                style="color:transparent; width:100px;"/>
-                                <div class="mt-2">Foto utama</div>
+                                style="color:transparent; width:65px;"/>
+                                <div class="mt-2">Foto 1</div>
                                 @error('photo1')
                                     <div class="alert alert-danger small">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4 text-center">
+                        <div class="col-4 text-center">
                             <div class="p-3" style="border: 2px solid #eeee; border-radius:20px;">
                                 <img class="img-fluid" style="width: 150px;" id="preview_2">
                                 <input
@@ -107,14 +93,14 @@
                                 name="photo2"
                                 id="photo2"
                                 onchange="previewImage2(event)"
-                                style="color:transparent; width:105px;"/>
+                                style="color:transparent; width:65px;"/>
                                 <div class="mt-2">Foto 2</div>
                                 @error('photo2')
                                     <div class="alert alert-danger small">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-4 text-center">
+                        <div class="col-4 text-center">
                             <div class="p-3" style="border: 2px solid #eeee; border-radius:20px;">
                                 <img class="img-fluid" style="width: 150px;" id="preview_3">
                                 <input
@@ -124,7 +110,7 @@
                                 name="photo3"
                                 id="photo3"
                                 onchange="previewImage3(event)"
-                                style="color:transparent; width:105px;"/>
+                                style="color:transparent; width:65px;"/>
                                 <div class="mt-2">Foto 3</div>
                                 @error('photo3')
                                     <div class="alert alert-danger small">{{ $message }}</div>
@@ -289,7 +275,8 @@
                             {{-- <input type="checkbox" name="draft" value="draft" id="draft">
                             <span for="draft" class="text-muted">Simpan sebagai draft </span> --}}
                             <br>
-                            <button type="submit" class="btn btn-lg btn-outline-primary mt-2">Pasang Iklan</button>
+                            <button type="submit" class="btn btn-lg btn-outline-primary">Pasang Iklan</button>
+                            <a class="btn btn-lg btn-danger" href="{{url('all_page')}}">Batal</a>
 
                         </div> 
                     </div>

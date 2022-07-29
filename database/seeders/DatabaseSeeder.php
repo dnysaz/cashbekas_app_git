@@ -135,7 +135,7 @@ class DatabaseSeeder extends Seeder
             'category' => 'Elektronika',
             'slug' => 'elektronika',
             'sub_1' => 'Komputer Dan Laptop',
-            'sub_2' => 'Audio Dan Speaker',
+            'sub_2' => 'Audio Dan Kamera',
             'sub_3' => 'TV LCD Dan Monitor',
             'sub_4' => 'Aksesoris',
             'sub_5' => 'Elektronika Lainya',

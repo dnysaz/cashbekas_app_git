@@ -33,6 +33,16 @@ class UserController extends Controller
         ->with('verified',$verified);
     }
 
+
+    public function ads_list()
+    {
+        $user_id = auth()->user()->user_id;
+
+        $ads = Ads::where('user_id',$user_id)->where('draft',null)->latest()->paginate(10);
+
+        return view('user.ads_list')->with('ads',$ads); 
+    }
+
     public function view_user($user_id) //controller untuk melihat user
 
     {

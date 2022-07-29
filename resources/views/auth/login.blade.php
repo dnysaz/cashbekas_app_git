@@ -2,7 +2,7 @@
 
 @section('app')
 
-    <div class="row justify-content-center mt-2">
+    <div class="row justify-content-center mt-5">
 
         <div class="col-md-4 mt-5">
 
@@ -73,13 +73,7 @@
 
                     <div class="mt-5 text-muted">
 
-                        <p>Don't have an account ? <a href="{{url('register')}}">Register</a> </p>
-
-                    </div>
-
-                    <div class="mt-4 text-muted">
-
-                        <p> <a href="{{url('/')}}">cashbekas.com </a>/ 2022</p>
+                        <p>Belum punya akun ? <a href="{{url('register')}}">Daftar</a> </p>
 
                     </div>
 

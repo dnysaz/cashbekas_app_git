@@ -181,7 +181,7 @@
     <div class="row mt-5 mb-5">
 
         @foreach ($categories as $category)
-            <div class="col-md-3 mt-4">
+            <div class="col-md-3 col-6 mb-5 mt-4">
                 <h6 class="text-muted"><a href="{{url('c/'.$category->category)}}">{{$category->category}}</a></h6>
                 <a href="{{url('c/'.$category->category)}}">
                     <div class="small text-muted"> <li>{{$category->sub_1}}</li></div>
@@ -196,10 +196,10 @@
     </div>
 
     <!-- Bottom Navbar for mobile menu -->
-    <nav class="navbar navbar-dark bg-primary navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none p-0">
+    <nav class="navbar navbar-dark bg-light navbar-expand fixed-bottom d-md-none d-lg-none d-xl-none p-0">
         <ul class="navbar-nav nav-justified w-100">
             <li class="nav-item">
-                <a href="{{url('all_page')}}" class="nav-link text-center">
+                <a href="{{url('all_page')}}" class="nav-link text-muted text-center">
                     <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-house" fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -211,7 +211,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('search_page')}}" class="nav-link text-center">
+                <a href="{{url('search_page')}}" class="nav-link text-muted text-center">
                     <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -223,7 +223,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('ads_list')}}" class="nav-link text-center">
+                <a href="{{url('ads_list')}}" class="nav-link text-muted text-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="currentColor" class="bi bi-bookmark-star" viewBox="0 0 16 16">
                         <path d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z"/>
                         <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
@@ -232,7 +232,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{url('user_dashboard')}}" class="nav-link text-center">
+                <a href="{{url('user_dashboard')}}" class="nav-link text-muted text-center">
                     <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-person" fill="currentColor"
                         xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"

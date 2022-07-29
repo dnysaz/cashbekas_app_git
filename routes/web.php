@@ -115,12 +115,16 @@ Route::middleware(['admin'])->group(function () {
 Route::middleware(['auth','verified'])->group(function () {
 
 
-    Route::get('create_ads', [PageController::class, 'create']);
+    Route::get('create_ads', [PageController::class, 'create_ads']);
+    Route::get('create_m_ads', [PageController::class, 'create_m_ads']);
+
     Route::post('create_ads', [PageController::class, 'create_post_ads']);
 
     // testing
     // Route::get('create', [PageController::class, 'create']);
     Route::get('create/{category}/{sub_category}', [PageController::class, 'create_new_ads']);
+    Route::get('m_create/{category}/{sub_category}', [PageController::class, 'm_create_new_ads']);
+
 
     Route::get('delete_ads/{ads_id}', [PageController::class, 'delete_ads']);
     Route::get('edit_ads/{ads_id}', [PageController::class, 'edit_ads']);
@@ -133,6 +137,9 @@ Route::middleware(['auth','verified'])->group(function () {
     Route::get('update_profile/{user_id}', [UserController::class, 'update_profile']);
     Route::post('simpan_profile/{user_id}', [UserController::class, 'simpan_profile']);
 
+
+    // user dashboard view ads list in mobile view
+    Route::get('ads_list', [UserController::class, 'ads_list']);
 
 
 

@@ -369,15 +369,22 @@ class PageController extends Controller
     }
 
 
-    //testing  create new ads version 2
+    //create new ads version 2
 
-    public function create()
+    public function create_ads()
 
     {
 
         $categories = Category::get();
         
         return view('page.create_ads')->with('categories',$categories);
+    }
+
+    public function create_m_ads()
+    {
+        $categories = Category::get();
+        
+        return view('page.create_m_ads')->with('categories',$categories);
     }
 
     public function create_new_ads($category, $sub_category)
@@ -389,6 +396,23 @@ class PageController extends Controller
         $locations = Location::where('province','Bali')->get();      
 
         return view('page.create_new_ads')
+
+        ->with('category',$category)
+        ->with('sub_category',$sub_category)
+        ->with('locations',$locations)
+        ->with('user',$user);
+    }
+
+
+    public function m_create_new_ads($category, $sub_category)
+
+    {
+
+        $user_id = auth()->user()->user_id;
+        $user = User::where('user_id',$user_id)->get();  
+        $locations = Location::where('province','Bali')->get();      
+
+        return view('page.m_create_new_ads')
 
         ->with('category',$category)
         ->with('sub_category',$sub_category)
