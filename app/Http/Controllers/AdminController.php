@@ -15,8 +15,7 @@ use App\Models\Footer;
 use App\Models\MainPage;
 use Exception;
 use Illuminate\Support\Facades\Auth;
-
-
+use PhpParser\Node\Stmt\ElseIf_;
 
 class AdminController extends Controller
 {
@@ -356,6 +355,95 @@ class AdminController extends Controller
         // dd($main_pages);
 
         return view('admin.view_main_page')->with('main_pages',$main_pages);
+    }
+
+
+    public function update_mainpage(Request $request, $value)
+    {
+        if($value == 'sitename') {
+
+            $data = ['sitename' => $request->sitename];
+
+            try {
+
+                MainPage::where('id',1)->update($data);
+    
+                return redirect()->back()->with('success','Site Name has been updated successfully!');
+    
+                } catch (Exception $e) {
+    
+                return redirect()->back()->with('error','Something went wrong! Please try again later.');
+    
+            }
+
+
+        } elseif($value == 'header_text') {
+
+            $data = ['header_text' => $request->header_text];
+
+            try {
+
+                MainPage::where('id',1)->update($data);
+    
+                return redirect()->back()->with('success','Header Text has been updated successfully!');
+    
+                } catch (Exception $e) {
+    
+                return redirect()->back()->with('error','Something went wrong! Please try again later.');
+    
+            }
+
+        } elseif($value == 'sitelogo') {
+
+            $sitelogo = $request->validate(['sitelogo'  => 'image|mimes:jpg,png,jpeg|max:2048|']);
+
+            if($sitelogo == []) {
+
+                return redirect()->back()->with('error','Please choose an image before submitting !');
+
+            } elseif($sitelogo) {
+
+                $sitelogo = $request->sitelogo;
+
+                $name = Str::random(4);
+                $ext  = strtolower($sitelogo->getClientOriginalExtension());
+                $sitelogo_name = $name.'.'.$ext;
+                $upload_path = 'images/main_pages/';
+                $sitelogo->move($upload_path, $sitelogo_name);
+                
+                $data = ['sitelogo' => $sitelogo_name];
+
+                try {
+
+                    MainPage::where('id',1)->update($data);
+        
+                    return redirect()->back()->with('success','Site Logo has been updated successfully!');
+        
+                    } catch (Exception $e) {
+        
+                    return redirect()->back()->with('error','Something went wrong! Please try again later.');
+        
+                }
+
+            } else {
+
+                return redirect()->back()->with('error','Please select an image file before submitting.');
+            }
+
+
+        } elseif($value == 'left_image') {
+            dd($request->left_image);
+
+        } elseif($value == 'right_image') {
+            dd($request->right_image);
+
+        } elseif($value == 'body_image') {
+            dd($request->body_image);
+
+        } elseif($value == 'bottom_image') {
+            dd($request->bottom_image);
+
+        }
     }
 
 

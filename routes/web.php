@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+// use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
@@ -21,7 +21,6 @@ Route::get('l/{location}', [PageController::class, 'show_location']);
 
 // show ads by category and sub category 
 Route::get('show_ads/{category}/{sub_category}', [PageController::class, 'show_ads_category']);
-
 
 
 Route::post('filter_ads',[PageController::class, 'filter_ads']);
@@ -93,19 +92,12 @@ Route::middleware(['admin'])->group(function () {
 
     // route for CRUD main pages
     Route::get('view_main_page', [AdminController::class, 'view_main_page']);
+    Route::post('update_mainpage/{value}', [AdminController::class, 'update_mainpage']);
+
 
     // route for foofter text 
     Route::get('view_footer_page', [AdminController::class, 'view_footer_page']);
     Route::post('update_footer_text/{id}', [AdminController::class, 'update_footer_text']);
-
-
-
-
-
-
-
-
-
 
 
 });
